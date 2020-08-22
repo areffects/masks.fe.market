@@ -1,0 +1,29 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+#vscode
+.history
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# production
+/build
+/buildAuth
+
+# misc
+.DS_Store
+.env.local
+
+react-app-env.d.ts
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+package-lock.json
+
+.vscode
+.idea/
+.env
