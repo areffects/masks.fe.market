@@ -1,10 +1,10 @@
 steps:
   - label: 'build styleguide'
     command:
-      - "docker-compose build styleguide"
+      - "docker-compose build --build-arg NODE_ENV=$NODE_ENV styleguide"
 
   - wait
 
   - label: 'start styleguide'
     command:
-      - "docker-compose up -d styleguide"
+      - "NODE_ENV=$NODE_ENV docker-compose up -d styleguide"

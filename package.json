@@ -6,8 +6,11 @@
 	"keywords": [
 		"front",
 		"next.js",
-		"test",
 		"react",
+		"client",
+		"graphql",
+    "typescript",
+		"apollo",
 		"ssr",
 		"masks"
 	],

@@ -1,10 +1,10 @@
 steps:
-  - label: 'build nextjs'
+  - label: 'build front'
     command:
-      - "docker-compose build --build-arg API_URL=$API_URL app"
+      - "docker-compose build --build-arg API_URL=$API_URL --build-arg NODE_ENV=$NODE_ENV app"
 
   - wait
 
-  - label: 'start nextjs'
+  - label: 'start front'
     command:
-      - "API_URL=$API_URL docker-compose up -d app"
+      - "NODE_ENV=$NODE_ENV API_URL=$API_URL docker-compose up -d app"

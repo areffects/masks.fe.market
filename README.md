@@ -23,7 +23,7 @@ nvm use
 To the first you need to clone project:
 
 ```bash
-git clone git@github.com:lossless1/masks.fe.git
+git clone git@github.com:areffects/masks.fe.git
 ```
 
 Next you should to install npm dependencies of project:
