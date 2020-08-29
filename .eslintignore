@@ -1,2 +1,7 @@
-node_modules
-config
+**/node_modules/*
+**/out/*
+**/.next/*
+**/.storybook-static/*
+*.graphql.d.ts
+*.graphqls.d.ts
+src/stories

@@ -1,0 +1,71 @@
+{
+	"compilerOptions": {
+		"allowJs": true,
+		"alwaysStrict": true,
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
+		"isolatedModules": true,
+		"allowSyntheticDefaultImports": true,
+		"removeComments": false,
+		"jsx": "preserve",
+		"lib": [
+			"dom",
+			"es2017"
+		],
+		"module": "esnext",
+		"moduleResolution": "node",
+		"noEmit": true,
+		"noFallthroughCasesInSwitch": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"resolveJsonModule": true,
+		"skipLibCheck": true,
+		"experimentalDecorators": true,
+		"strict": true,
+		"target": "esnext",
+		"rootDir": ".",
+		"baseUrl": ".",
+		"paths": {
+			"src/*": [
+				"src/*"
+			],
+			"components/*": [
+				"src/components/*"
+			],
+			"constants/*": [
+				"src/constants/*"
+			],
+			"hooks/*": [
+				"src/hooks/*"
+			],
+			"lib/*": [
+				"src/lib/*"
+			],
+			"pages/*": [
+				"src/pages/*"
+			],
+			"services/*": [
+				"src/services/*"
+			],
+			"stories/*": [
+				"src/stories/*"
+			],
+			"styles/*": [
+				"src/styles/*"
+			],
+			"tools/*": [
+				"src/tools/*"
+			],
+			"types/*": [
+				"src/types/*"
+			]
+		}
+	},
+	"exclude": [
+		"node_modules"
+	],
+	"include": [
+		"**/*.ts",
+		"**/*.tsx"
+	]
+}
