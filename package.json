@@ -11,6 +11,7 @@
 		"ssr",
 		"masks"
 	],
+	"license": "UNLICENSED",
 	"author": "Masks team",
 	"scripts": {
 		"analyze": "cross-env ANALYZE=true yarn build",
