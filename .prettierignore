@@ -1,0 +1,9 @@
+*.yml
+*.yaml
+.babelrc
+*.md
+test
+node_modules
+dist
+build
+.build

@@ -1,0 +1,10 @@
+steps:
+  - label: 'build nextjs'
+    command:
+      - "docker-compose build --build-arg API_URL=$API_URL app"
+
+  - wait
+
+  - label: 'start nextjs'
+    command:
+      - "API_URL=$API_URL docker-compose up -d app"

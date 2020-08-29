@@ -1,0 +1,10 @@
+steps:
+  - label: 'build styleguide'
+    command:
+      - "docker-compose build styleguide"
+
+  - wait
+
+  - label: 'start styleguide'
+    command:
+      - "docker-compose up -d styleguide"
