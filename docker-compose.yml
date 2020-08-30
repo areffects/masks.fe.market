@@ -9,13 +9,13 @@ services:
       - NODE_ENV
       - API_URL
     ports:
-      - 3000:3000
+      - 3010:3010
     volumes:
       - ./src:/app/src
       - ./public:/app/public
       - ./.env:/app/.env
       - ./package.json:/app/package.json
-    command: ["./node_modules/.bin/next", "start", "-p", "3000"]
+    command: ["./node_modules/.bin/next", "start", "-p", "3010"]
 
   storybook:
     build:
