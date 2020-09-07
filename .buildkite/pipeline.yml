@@ -1,10 +1,10 @@
 steps:
   - label: 'build front'
     command:
-      - "docker-compose build --build-arg API_URL=$API_URL --build-arg NODE_ENV=$NODE_ENV app"
+      - "docker-compose build --build-arg API_URL=$API_URL --build-arg NODE_ENV=$NODE_ENV market"
 
   - wait
 
   - label: 'start front'
     command:
-      - "NODE_ENV=$NODE_ENV API_URL=$API_URL docker-compose up -d app"
+      - "NODE_ENV=$NODE_ENV API_URL=$API_URL docker-compose up -d market"
