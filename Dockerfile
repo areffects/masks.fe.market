@@ -8,7 +8,7 @@ WORKDIR /market
 COPY package.json .
 COPY yarn.lock .
 
-RUN yarn --production=false
+RUN yarn --frozen-lockfile --production=false
 
 COPY . .
 
