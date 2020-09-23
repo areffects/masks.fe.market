@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ReactElement } from 'react'
 import styled from 'styled-components'
 
 import Head, { IHead } from 'components/Layout/Head'
@@ -13,14 +13,12 @@ const StyledSection = styled.section`
 	padding: 30px;
 `
 
-const Home = () => {
-	return (
-		<StyledSection>
-			<Head {...headProps} />
-			<h1>Hey 👋</h1>
-			<ImageShadows src="/static/images/cat.jpg" width="280px" alt="Happy cat" />
-		</StyledSection>
-	)
-}
+const Home = (): ReactElement => (
+	<StyledSection>
+		<Head {...headProps} />
+		<h1>Hey 👋</h1>
+		<ImageShadows src="/static/images/cat.jpg" width="280px" alt="Happy cat" />
+	</StyledSection>
+)
 
 export default Home

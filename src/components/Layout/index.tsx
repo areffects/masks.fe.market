@@ -15,6 +15,7 @@ const Layout: React.FC = ({ children }) => (
 	<StyledGrid fluid={true}>
 		<Header />
 		{/* <Spinner /> TODO: active on loading */}
+
 		<Main>{children}</Main>
 		<Footer />
 	</StyledGrid>

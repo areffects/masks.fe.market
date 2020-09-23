@@ -1,8 +1,8 @@
-import { ResolverContext } from './index'
-import { QueryResolvers } from './viewer.graphql'
+// import { ResolverContext } from './index'
+// import { QueryResolvers } from './viewer.gql'
 
-const Query: Required<QueryResolvers<ResolverContext>> = {
-	viewer(_parent: any, _args: any, _context: any, _info: any) {
+const Query = {
+	viewer(): any {
 		return { id: String(1), name: 'John Smith', status: 'cached' }
 	},
 }

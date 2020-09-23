@@ -6,7 +6,7 @@ import { NextApiRequest, NextApiResponse } from 'next'
  * @param {NextApiRequest} req
  * @param {NextApiResponse} res
  */
-const health = async (_req: NextApiRequest, res: NextApiResponse) => {
+const health = async (_req: NextApiRequest, res: NextApiResponse): Promise<void> => {
 	res.send('OK')
 }
 
