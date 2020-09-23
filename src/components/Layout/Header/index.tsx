@@ -13,11 +13,17 @@ const Header: React.FC = () => {
 			<Row>
 				<Col xs={6}>
 					<nav>
-						<Link href="/cat-1" passHref>
+						<Link href="/cat-1">
 							<a>Cat 1</a>
 						</Link>
-						<Link href="/cat-2" passHref>
+						<Link href="/cat-2">
 							<a>Cat 2</a>
+						</Link>
+						<Link href="/signin">
+							<a>SignIn</a>
+						</Link>
+						<Link href="/signup">
+							<a>SignUp</a>
 						</Link>
 					</nav>
 				</Col>

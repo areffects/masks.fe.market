@@ -8,8 +8,9 @@ import theme from 'styles/theme'
 import Layout from 'components/Layout'
 
 import 'styles/css/global.css'
+import { ReactElement } from 'react'
 
-const NextApp = ({ Component, pageProps }: AppProps) => {
+const NextApp = ({ Component, pageProps }: AppProps): ReactElement => {
 	const apolloClient = useApollo(pageProps.initialApolloState)
 	return (
 		<ApolloProvider client={apolloClient}>
