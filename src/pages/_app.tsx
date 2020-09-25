@@ -5,7 +5,7 @@ import { useApollo } from 'lib/apollo'
 
 import theme from 'styles/theme'
 
-import Layout from 'components/Layout'
+// import Layout from 'components/Layout'
 
 import 'styles/css/global.css'
 import { ReactElement } from 'react'
@@ -15,9 +15,9 @@ const NextApp = ({ Component, pageProps }: AppProps): ReactElement => {
 	return (
 		<ApolloProvider client={apolloClient}>
 			<ThemeProvider theme={theme}>
-				<Layout>
-					<Component {...pageProps} />
-				</Layout>
+				{/* <Layout> */}
+				<Component {...pageProps} />
+				{/* </Layout> */}
 			</ThemeProvider>
 		</ApolloProvider>
 	)

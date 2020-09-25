@@ -19,11 +19,14 @@ const Header: React.FC = () => {
 						<Link href="/cat-2">
 							<a>Cat 2</a>
 						</Link>
-						<Link href="/signin">
+						<Link href="/auth/signin">
 							<a>SignIn</a>
 						</Link>
-						<Link href="/signup">
+						<Link href="/auth/signup">
 							<a>SignUp</a>
+						</Link>
+						<Link href="/products">
+							<a>products</a>
 						</Link>
 					</nav>
 				</Col>

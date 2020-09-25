@@ -14,6 +14,10 @@ const themeMedia: IThemeMedia = {
 const theme: DefaultTheme = {
 	color: {
 		primary: '#0e93f7',
+		black: '#3c3c3c',
+		gray: '#BDBDBD',
+		white: 'white',
+		linkBlue: '#4D69FF',
 	},
 	media: themeMedia,
 }

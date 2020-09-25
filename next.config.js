@@ -22,6 +22,18 @@ const nextConfig = {
 			exclude: /node_modules/,
 			use: ['graphql-tag/loader', 'graphql-let/schema/loader'],
 		})
+		config.module.rules.push({
+			test: /\.svg$/,
+			// use: [
+			// 	{
+			// 		loader: '@svgr/webpack',
+			// 		options: {
+			// 			native: true,
+			// 		},
+			// 	},
+			// ],
+			use: ['@svgr/webpack', 'url-loader'],
+		})
 
 		return config
 	},

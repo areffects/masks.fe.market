@@ -1,22 +1,16 @@
 import styled from 'styled-components'
 
 const Button = styled.button`
-	margin: 20px 0 0;
-	box-shadow: 0px 1px 0px 0px #ffffff;
-	background-color: transparent;
-	border-radius: 3px;
-	border: 2px solid #dcdcdc;
 	display: inline-block;
-	cursor: pointer;
-	color: #666666;
-	font-size: 15px;
-	font-weight: bold;
-	padding: 18px 53px;
-	text-decoration: none;
-	text-transform: uppercase;
-
+	background: ${({ theme }) => theme.color.black};
+	box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.12), 0px 2px 2px rgba(0, 0, 0, 0.24);
+	border-radius: 5px;
+	padding: 1rem 2.5rem;
+	font-size: 1.4rem;
+	color: ${({ theme }) => theme.color.white};
+	font-family: 'HelveticaNeueCyr-Medium';
 	&:hover {
-		background-color: transparent;
+		background: ${({ theme }) => theme.color.gray};
 	}
 	&:active {
 		position: relative;

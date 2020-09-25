@@ -15,6 +15,10 @@ declare module 'styled-components' {
 	export interface DefaultTheme {
 		color: {
 			primary: string
+			black: string
+			gray: string
+			white: string
+			linkBlue: string
 		}
 		font?: {
 			family: string

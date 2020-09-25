@@ -16,9 +16,14 @@ const createIsomorphLink = (context: ResolverContext = {}) => {
 		return new SchemaLink({ schema, context })
 	} else {
 		const { HttpLink } = require('apollo-link-http')
+		const token = localStorage.getItem('auth_token')
+
 		return new HttpLink({
-			uri: '/api/graphql',
+			uri: 'http://localhost:4000/graphql',
 			credentials: 'same-origin',
+			headers: {
+				authorization: token ? `Bearer ${token}` : '',
+			},
 		})
 	}
 }
@@ -37,7 +42,6 @@ export const initializeApollo = (
 	context?: ResolverContext,
 ): ApolloClient<any> => {
 	const _apolloClient = apolloClient ?? createApolloClient(context)
-
 	// If your page has Next.js data fetching methods that use Apollo Client, the initial state
 	// get hydrated here
 	if (initialState) {
