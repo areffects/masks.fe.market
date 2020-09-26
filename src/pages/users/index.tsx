@@ -84,10 +84,10 @@ const Users = (): ReactElement | null | string => {
 				</UserBlock>
 			))}
 			<Dialog onCancel={handleCloseDialog} onSubmit={handleSubmitEditDialog} isOpen={isEditOpen}>
-				Hello world
+				{'Hello world'}
 			</Dialog>
 			<Dialog onCancel={handleCloseDialog} onSubmit={handleSubmitDeleteDialog} isOpen={isEditOpen}>
-				Delete user?
+				{'Delete user?'}
 			</Dialog>
 		</div>
 	)

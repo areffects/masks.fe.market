@@ -1,6 +1,6 @@
 export interface IProps {
 	isOpen: boolean
-	children: Node
+	children: Node | string
 	onCancel: any
 	onSubmit: any
 }
