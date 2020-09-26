@@ -9,8 +9,12 @@ const Button = styled.button`
 	font-size: 1.4rem;
 	color: ${({ theme }) => theme.color.white};
 	font-family: 'HelveticaNeueCyr-Medium';
-	&:hover {
-		background: ${({ theme }) => theme.color.gray};
+	height: 3.4rem;
+	// &:hover {
+	// 	background: ${({ theme }) => theme.color.gray};
+	// }
+	&:disabled {
+		opacity: 0.7;
 	}
 	&:active {
 		position: relative;

@@ -1,10 +1,18 @@
-import React, { ReactElement } from 'react'
+import styled from 'styled-components'
+import React, { ReactElement, useState } from 'react'
+import { useForm } from 'react-hook-form'
 import Button from 'src/components/Form/Button'
 import TextInput from 'src/components/Form/TextInput'
-import Icon from 'src/components/Icon/Icon'
-import styled from 'styled-components'
-// import googleIcon from 'src/components/Icon/icons/google.svg'
-// import { ReactSVG } from 'react-svg'
+import { ErrorMessage } from 'src/components/Form/ErrorMessage'
+import GoogleIcon from '../../components/Icon/icons/google.svg'
+import FacebookIcon from '../../components/Icon/icons/facebook.svg'
+import Link from 'src/components/Link'
+import { useMutation } from '@apollo/react-hooks'
+import { emailValidator, passwordValidator } from 'src/utils/validators'
+import { AUTH_SIGN_UP } from 'src/constants/paths'
+import { withTranslation } from '../../../i18n.js'
+import Lang from 'src/components/Lang'
+import { LOGIN_USER } from 'src/lib/gqls/users'
 
 const WrapContainer = styled.div`
 	display: flex;
@@ -14,7 +22,7 @@ const WrapContainer = styled.div`
 	width: 100vw;
 `
 
-const ContainerAuthBlock = styled.div`
+const ContainerAuthBlock = styled.form`
 	padding: 24px 32px;
 	position: absolute;
 	display: flex;
@@ -23,47 +31,113 @@ const ContainerAuthBlock = styled.div`
 	box-shadow: 0px 0.4rem 1rem rgba(0, 0, 0, 0.25);
 	border-radius: 0.5rem;
 `
+
 const AuthHeader = styled.div`
 	font-family: 'HelveticaNeueBoldCondensed';
 	font-size: 2.4rem;
 	text-align: center;
+	margin-bottom: 0.8rem;
 `
-const Label = styled.label`
-	font-size: 1.4rem;
-	margin-bottom: 0.5rem;
-`
-const Link = styled.a`
-	color: ${({ theme }) => theme.color.linkBlue};
-`
+
 const Center = styled.p`
 	text-align: center;
 `
-const ActionButtonBlock = styled.div`
+
+const SocBlock = styled.div`
 	display: flex;
-	justify-content: flex-end;
 	margin-bottom: 2.4rem;
+	svg {
+		margin-right: 1rem;
+	}
 `
-const SignIn = (): ReactElement => {
+
+const LoginBlock = styled.div`
+	display: flex;
+	margin-top: 1.8rem;
+	justify-content: space-between;
+`
+
+const SignIn = ({ t }: any): ReactElement => {
+	const [error, setError] = useState('')
+
+	const [
+		loginUser,
+		{
+			// data,
+			loading,
+		},
+	] = useMutation(LOGIN_USER, {
+		update() // cache,
+		// {
+		// 	data: {
+		// 		loginUser: { token },
+		// 	},
+		// },
+		{
+			// cache.modify({
+			// 	fields: {
+			// 		loginUser(value, details) {
+			// 			console.log('value :>> ', value)
+			// 			console.log('details :>> ', details)
+			// 			return token
+			// 		},
+			// 	},
+			// })
+		},
+		onError(error) {
+			setError(error.message)
+		},
+		onCompleted() {
+			setError('')
+		},
+	})
+	const { handleSubmit, register, errors } = useForm()
+	const handleLogin = ({ email, password }: { email: string; password: string }) => {
+		loginUser({ variables: { email, password } })
+	}
 	return (
 		<WrapContainer>
-			<ContainerAuthBlock>
-				<AuthHeader>Sign in!</AuthHeader>
-				<Label>Login:</Label>
-				<TextInput type="text" placeholder="Type here..." />
-				<Label>Password:</Label>
-				<TextInput type="text" placeholder="Type here..." />
-				<Link>Forgot password?</Link>
-				<ActionButtonBlock>
-					<Button>LOGIN</Button>
-				</ActionButtonBlock>
-				{/* <ReactSVG src={googleIcon} /> */}
-				<Icon name="google"></Icon>
+			<ContainerAuthBlock onSubmit={handleSubmit(handleLogin)}>
+				<AuthHeader>{t('signIn')}</AuthHeader>
+				<TextInput
+					label="email"
+					type="text"
+					name="email"
+					register={register}
+					patternValue={emailValidator}
+					patternMessage={'invalidEmail'}
+					placeholder={'typeHere'}
+					errors={errors}
+				/>
+				<Lang />
+				<TextInput
+					label="password"
+					name="password"
+					type="password"
+					register={register}
+					patternValue={passwordValidator}
+					patternMessage={'invalidPassword'}
+					placeholder={'typeHere'}
+					errors={errors}
+				/>
+				<Link to="/auth">{t('forgotPassword')}</Link>
+				<LoginBlock>
+					<SocBlock>
+						<GoogleIcon />
+						<FacebookIcon />
+					</SocBlock>
+					<Button disabled={loading} type="submit">
+						{t('signInButton')}
+					</Button>
+				</LoginBlock>
+				<ErrorMessage>{error}</ErrorMessage>
 				<Center>
-					Don&apos;t have an account?<Link>Register here</Link>
+					{t('dontHaveAccount')}
+					<Link to={AUTH_SIGN_UP}>{t('registerHere')}</Link>
 				</Center>
 			</ContainerAuthBlock>
 		</WrapContainer>
 	)
 }
 
-export default SignIn
+export default withTranslation('common')(SignIn)

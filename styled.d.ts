@@ -19,6 +19,7 @@ declare module 'styled-components' {
 			gray: string
 			white: string
 			linkBlue: string
+			error: string
 		}
 		font?: {
 			family: string

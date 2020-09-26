@@ -1,6 +1,8 @@
 import { IncomingMessage, ServerResponse } from 'http'
 import { useMemo } from 'react'
 import { ApolloClient, InMemoryCache, NormalizedCacheObject } from '@apollo/client'
+import { IS_LOGGED_IN } from 'src/constants/graphql/queries'
+import { AUTH_TOKEN } from 'src/constants/storage/ls'
 
 let apolloClient: ApolloClient<NormalizedCacheObject> | undefined
 
@@ -16,8 +18,7 @@ const createIsomorphLink = (context: ResolverContext = {}) => {
 		return new SchemaLink({ schema, context })
 	} else {
 		const { HttpLink } = require('apollo-link-http')
-		const token = localStorage.getItem('auth_token')
-
+		const token = localStorage.getItem(AUTH_TOKEN)
 		return new HttpLink({
 			uri: 'http://localhost:4000/graphql',
 			credentials: 'same-origin',
@@ -28,12 +29,30 @@ const createIsomorphLink = (context: ResolverContext = {}) => {
 	}
 }
 
-const createApolloClient = (context?: ResolverContext) =>
-	new ApolloClient({
+const createApolloClient = (context?: ResolverContext) => {
+	const cache = new InMemoryCache({
+		typePolicies: {
+			loginUser: {
+				keyFields: ['loginUser'],
+			},
+		},
+	})
+	if (typeof window !== 'undefined') {
+		cache.writeQuery({
+			query: IS_LOGGED_IN,
+			data: {
+				hello: 'world',
+				isLoggedIn: !!localStorage.getItem(AUTH_TOKEN),
+			},
+		})
+	}
+
+	return new ApolloClient({
 		ssrMode: typeof window === 'undefined',
 		link: createIsomorphLink(context),
-		cache: new InMemoryCache(),
+		cache,
 	})
+}
 
 export const initializeApollo = (
 	initialState: any = null,
@@ -55,7 +74,7 @@ export const initializeApollo = (
 	return _apolloClient
 }
 
-export const useApollo = (initialState: any) => {
+export const useApollo = (initialState: any): ApolloClient<any> => {
 	const store = useMemo(() => initializeApollo(initialState), [initialState])
 	return store
 }

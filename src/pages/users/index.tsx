@@ -63,12 +63,9 @@ const Users = (): ReactElement | null | string => {
 	}
 	const handleSubmitEditDialog = (values: any) => {
 		return values
-		// console.log(values)
 	}
-	// console.log(12344)
 	const handleSubmitDeleteDialog = (values: any) => {
 		return values
-		// console.log(values)
 	}
 	return (
 		<div>

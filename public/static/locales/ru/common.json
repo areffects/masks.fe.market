@@ -1,0 +1,23 @@
+{
+	"hello": "Привет!",
+	"forgotPassword": "Забыл пароль?",
+	"registerHere": "Зарегистрируйся!",
+	"invalidEmail": "Не правильный email!",
+	"invalidPassword": "Не правильный пароль!",
+	"typeHere": "Писать сюда...",
+	"required": "Обязательно!",
+	"dontHaveAccount": "Еще не зарегистрирован? ",
+	"singIn": "Войти!",
+	"email": "Email:",
+	"password": "Пароль:",
+	"signIn": "Войти",
+	"signUp": "Регистрация",
+	"firstName": "Имя:",
+	"lastName": "Фамилия:",
+	"alreadyHaveAccount": "Уже есть аккаунт? ",
+	"rePassword": "Повторите пароль:",
+	"userName": "Временный никнейм:",
+	"signInButton": "ВОЙТИ",
+	"signUpButton": "ЗАРЕГИСТРИРОВАТЬСЯ",
+	"passwordError": "Пароли не совпадают!"
+}

@@ -1,5 +1,6 @@
 import { ReactElement } from 'react'
 import styled from 'styled-components'
+import { IProps } from './types'
 
 const CrossButton = styled.button``
 
@@ -42,27 +43,24 @@ const ActionButton = styled.button`
 
 const ContentBlock = styled.div``
 
-const Dialog = ({ isOpen, children, onCancel, onSubmit }: any): ReactElement => {
-	return (
-		isOpen && (
-			<>
-				<BackgroundDialog>
-					<DialogBlock>
-						<Header>
-							Dialog
-							<CrossButton onClick={onCancel}>X</CrossButton>
-						</Header>
+const Dialog = ({ isOpen, children, onCancel, onSubmit }: IProps): ReactElement =>
+	isOpen ? (
+		<BackgroundDialog>
+			<DialogBlock>
+				<Header>
+					Dialog
+					<CrossButton onClick={onCancel}>X</CrossButton>
+				</Header>
 
-						<ContentBlock>{children}</ContentBlock>
-						<ActionsButtonsBlock>
-							<ActionButton onClick={onCancel}>Close</ActionButton>
-							<ActionButton onClick={onSubmit}>Submit</ActionButton>
-						</ActionsButtonsBlock>
-					</DialogBlock>
-				</BackgroundDialog>
-			</>
-		)
+				<ContentBlock>{children}</ContentBlock>
+				<ActionsButtonsBlock>
+					<ActionButton onClick={onCancel}>Close</ActionButton>
+					<ActionButton onClick={onSubmit}>Submit</ActionButton>
+				</ActionsButtonsBlock>
+			</DialogBlock>
+		</BackgroundDialog>
+	) : (
+		<></>
 	)
-}
 
 export { Dialog }

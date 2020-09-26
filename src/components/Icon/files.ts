@@ -28,7 +28,7 @@ import appleDownload from './icons/apple_download.svg'
 import androidDownload from './icons/android_download.svg'
 import hamburger from './icons/hamburger.svg'
 import cross from './icons/cross.svg'
-import google from './icons/google.svg'
+// import google from './icons/google.svg'
 
 const nameToFile = {
 	[ICON_NAMES.TEST_ICON]: testIcon,
@@ -58,7 +58,7 @@ const nameToFile = {
 	[ICON_NAMES.ANDROID_DOWNLOAD]: androidDownload,
 	[ICON_NAMES.HAMBURGER]: hamburger,
 	[ICON_NAMES.CROSS]: cross,
-	[ICON_NAMES.GOOGLE]: google,
+	// [ICON_NAMES.GOOGLE]: google,
 }
 
 export default nameToFile

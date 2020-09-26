@@ -18,6 +18,7 @@ const theme: DefaultTheme = {
 		gray: '#BDBDBD',
 		white: 'white',
 		linkBlue: '#4D69FF',
+		error: '#ff4c4c',
 	},
 	media: themeMedia,
 }
