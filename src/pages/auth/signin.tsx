@@ -3,9 +3,7 @@ import React, { ReactElement, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import Button from 'src/components/Form/Button'
 import TextInput from 'src/components/Form/TextInput'
-import { ErrorMessage } from 'src/components/Form/ErrorMessage'
-import GoogleIcon from '../../components/Icon/icons/google.svg'
-import FacebookIcon from '../../components/Icon/icons/facebook.svg'
+import { SmallErrorMessage } from 'src/components/Form/ErrorMessage'
 import Link from 'src/components/Link'
 import { useMutation } from '@apollo/react-hooks'
 import { emailValidator, passwordValidator } from 'src/utils/validators'
@@ -13,6 +11,7 @@ import { AUTH_SIGN_UP } from 'src/constants/paths'
 import { withTranslation } from '../../../i18n.js'
 import Lang from 'src/components/Lang'
 import { LOGIN_USER } from 'src/lib/gqls/users'
+import Icon from 'src/components/Icon/Icon'
 
 const WrapContainer = styled.div`
 	display: flex;
@@ -123,14 +122,14 @@ const SignIn = ({ t }: any): ReactElement => {
 				<Link to="/auth">{t('forgotPassword')}</Link>
 				<LoginBlock>
 					<SocBlock>
-						<GoogleIcon />
-						<FacebookIcon />
+						<Icon name="google" />
+						<Icon name="facebook" />
 					</SocBlock>
 					<Button disabled={loading} type="submit">
 						{t('signInButton')}
 					</Button>
 				</LoginBlock>
-				<ErrorMessage>{error}</ErrorMessage>
+				<SmallErrorMessage>{error}</SmallErrorMessage>
 				<Center>
 					{t('dontHaveAccount')}
 					<Link to={AUTH_SIGN_UP}>{t('registerHere')}</Link>

@@ -1,34 +1,34 @@
 import { ICON_NAMES } from './constants'
 
-import testIcon from './icons/test-icon.svg'
-import covid19Logo from './icons/covid19Logo.svg'
-import companyLogo from './icons/companyLogo.svg'
-import registerIllustration from './icons/registerIllustration.svg'
-import registerCongratulationIllustration from './icons/registerCongratulationIllustration.svg'
-import flagSh from './icons/flag_sh.svg'
-import smallLogo from './icons/smallLogo.svg'
-import resetPasswordLetter from './icons/resetPasswordLetter.svg'
-import eyePassword from './icons/eyePassword.svg'
-import eyePasswordHide from './icons/eyePasswordHide.svg'
-import trackYourVitalIllustration1 from './icons/trackYourVitalIllustration1.svg'
-import trackYourVitalIllustration2 from './icons/trackYourVitalIllustration2.svg'
-import trackYourVitalIllustration3 from './icons/trackYourVitalIllustration3.svg'
-import trackYourVitalIllustration4 from './icons/trackYourVitalIllustration4.svg'
-import profileIllustration from './icons/profileIllustration.svg'
-import iconCheck from './icons/icon_check.svg'
-import iconDoc from './icons/icon_doc.svg'
-
-import birthday_gender from './icons/birthday_gender.svg'
-import mail from './icons/mail.svg'
-import userId from './icons/user_id.svg'
-import weightHeight from './icons/weight_height.svg'
-import zip from './icons/zip.svg'
-import triangleDown from './icons/triangle_down.svg'
-import appleDownload from './icons/apple_download.svg'
-import androidDownload from './icons/android_download.svg'
-import hamburger from './icons/hamburger.svg'
-import cross from './icons/cross.svg'
-// import google from './icons/google.svg'
+import testIcon from './icons/old/test-icon.svg'
+import covid19Logo from './icons/old/covid19Logo.svg'
+import companyLogo from './icons/old/companyLogo.svg'
+import registerIllustration from './icons/old/registerIllustration.svg'
+import registerCongratulationIllustration from './icons/old/registerCongratulationIllustration.svg'
+import flagSh from './icons/old/flag_sh.svg'
+import smallLogo from './icons/old/smallLogo.svg'
+import resetPasswordLetter from './icons/old/resetPasswordLetter.svg'
+import eyePassword from './icons/old/eyePassword.svg'
+import eyePasswordHide from './icons/old/eyePasswordHide.svg'
+import trackYourVitalIllustration1 from './icons/old/trackYourVitalIllustration1.svg'
+import trackYourVitalIllustration2 from './icons/old/trackYourVitalIllustration2.svg'
+import trackYourVitalIllustration3 from './icons/old/trackYourVitalIllustration3.svg'
+import trackYourVitalIllustration4 from './icons/old/trackYourVitalIllustration4.svg'
+import profileIllustration from './icons/old/profileIllustration.svg'
+import iconCheck from './icons/old/icon_check.svg'
+import iconDoc from './icons/old/icon_doc.svg'
+import birthday_gender from './icons/old/birthday_gender.svg'
+import mail from './icons/old/mail.svg'
+import userId from './icons/old/user_id.svg'
+import weightHeight from './icons/old/weight_height.svg'
+import zip from './icons/old/zip.svg'
+import triangleDown from './icons/old/triangle_down.svg'
+import appleDownload from './icons/old/apple_download.svg'
+import androidDownload from './icons/old/android_download.svg'
+import hamburger from './icons/old/hamburger.svg'
+import cross from './icons/old/cross.svg'
+import google from './icons/google.svg'
+import facebook from './icons/facebook.svg'
 
 const nameToFile = {
 	[ICON_NAMES.TEST_ICON]: testIcon,
@@ -58,7 +58,8 @@ const nameToFile = {
 	[ICON_NAMES.ANDROID_DOWNLOAD]: androidDownload,
 	[ICON_NAMES.HAMBURGER]: hamburger,
 	[ICON_NAMES.CROSS]: cross,
-	// [ICON_NAMES.GOOGLE]: google,
+	[ICON_NAMES.GOOGLE]: google,
+	[ICON_NAMES.FACEBOOK]: facebook,
 }
 
 export default nameToFile

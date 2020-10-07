@@ -1,15 +1,27 @@
 import nameToFile from './files'
-import React, { ReactElement } from 'react'
+import React from 'react'
+import styled from 'styled-components'
 
-interface Props {
+interface Props extends React.FC {
 	name: string
 }
+const IconWrapper = styled.div`
+	svg {
+		cursor: pointer;
+		&:hover {
+			opacity: 0.8;
+		}
+	}
+`
 
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-const Icon = ({ name, ...props }: Props): ReactElement => {
-	const Icon = nameToFile[name]
-	if (Icon) {
-		return <Icon {...props} />
+const Icon: React.FC<Props> = ({ name, ...props }) => {
+	const IconFile: any = nameToFile[name]
+	if (IconFile) {
+		return (
+			<IconWrapper>
+				<IconFile {...props} />
+			</IconWrapper>
+		)
 	}
 	return <div>Icon not found</div>
 }

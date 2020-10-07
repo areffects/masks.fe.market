@@ -28,4 +28,5 @@ export const ICON_NAMES = {
 	HAMBURGER: 'hamburger',
 	CROSS: 'cross',
 	GOOGLE: 'google',
+	FACEBOOK: 'facebook',
 }
