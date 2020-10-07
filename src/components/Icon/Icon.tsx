@@ -2,7 +2,7 @@ import nameToFile from './files'
 import React from 'react'
 import styled from 'styled-components'
 
-interface Props extends React.FC {
+interface Props {
 	name: string
 }
 const IconWrapper = styled.div`
