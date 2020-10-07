@@ -16,7 +16,7 @@ const StyledSection = styled.section`
 const Home = (): ReactElement => (
 	<StyledSection>
 		<Head {...headProps} />
-		<h1>Hey 👋</h1>
+		<h1>Hey 👋. Its market</h1>
 		<ImageShadows src="/static/images/cat.jpg" width="280px" alt="Happy cat" />
 	</StyledSection>
 )
