@@ -1,4 +1,5 @@
 # Masks Front Market
+[![Actions Status](https://github.com/areffects/masks.fe.market/workflows/{workflow_name}/badge.svg)](https://github.com/areffects/masks.fe.market/actions)
 
 The client side application based on [Next.js](https://nextjs.org/).
 
