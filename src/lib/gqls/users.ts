@@ -33,3 +33,14 @@ export const REGISTER_USER = gql`
 		}
 	}
 `
+
+export const GET_USERS = gql`
+	{
+		findAllUser {
+			_id
+			userName
+			role
+			status
+		}
+	}
+`

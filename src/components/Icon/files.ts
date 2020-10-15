@@ -1,7 +1,6 @@
 import { ICON_NAMES } from './constants'
 
 import testIcon from './icons/old/test-icon.svg'
-import covid19Logo from './icons/old/covid19Logo.svg'
 import companyLogo from './icons/old/companyLogo.svg'
 import registerIllustration from './icons/old/registerIllustration.svg'
 import registerCongratulationIllustration from './icons/old/registerCongratulationIllustration.svg'
@@ -27,12 +26,24 @@ import appleDownload from './icons/old/apple_download.svg'
 import androidDownload from './icons/old/android_download.svg'
 import hamburger from './icons/old/hamburger.svg'
 import cross from './icons/old/cross.svg'
-import google from './icons/google.svg'
-import facebook from './icons/facebook.svg'
+import google from './icons/new/google.svg'
+import facebook from './icons/new/facebook.svg'
+import masksLogo from './icons/new/masksLogo.svg'
+import bookmark from './icons/new/bookmark.svg'
+import shoppingCart from './icons/new/shoppingCart.svg'
+import user from './icons/new/user.svg'
 
 const nameToFile = {
+	[ICON_NAMES.GOOGLE]: google,
+	[ICON_NAMES.FACEBOOK]: facebook,
+	[ICON_NAMES.MASKS_LOGO]: masksLogo,
+	[ICON_NAMES.BOOKMARK]: bookmark,
+	[ICON_NAMES.SHOPPING_CART]: shoppingCart,
+	[ICON_NAMES.USER]: user,
+}
+
+const oldNameToFile = {
 	[ICON_NAMES.TEST_ICON]: testIcon,
-	[ICON_NAMES.COVID_LOGO_ICON]: covid19Logo,
 	[ICON_NAMES.COMPANY_LOGO_ICON]: companyLogo,
 	[ICON_NAMES.REGISTER_ILLUSTRATION_ICON]: registerIllustration,
 	[ICON_NAMES.REGISTER_CONFIGURATION_ILLUSTRATION]: registerCongratulationIllustration,
@@ -58,8 +69,6 @@ const nameToFile = {
 	[ICON_NAMES.ANDROID_DOWNLOAD]: androidDownload,
 	[ICON_NAMES.HAMBURGER]: hamburger,
 	[ICON_NAMES.CROSS]: cross,
-	[ICON_NAMES.GOOGLE]: google,
-	[ICON_NAMES.FACEBOOK]: facebook,
 }
 
-export default nameToFile
+export default { ...nameToFile, ...oldNameToFile }

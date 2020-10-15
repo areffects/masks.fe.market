@@ -1,4 +1,4 @@
 export interface IProps {
-	to: string
-	children: Node
+	href: string
+	StyleComponent?: any
 }

@@ -1,6 +1,14 @@
+const NEW_ICON_NAMES = {
+	GOOGLE: 'google',
+	FACEBOOK: 'facebook',
+	MASKS_LOGO: 'masksLogo',
+	BOOKMARK: 'bookmark',
+	SHOPPING_CART: 'shoppingCart',
+	USER: 'user',
+}
+
 export const ICON_NAMES = {
 	TEST_ICON: 'test-icon',
-	COVID_LOGO_ICON: 'covid19Logo',
 	COMPANY_LOGO_ICON: 'companyLogo',
 	REGISTER_ILLUSTRATION_ICON: 'registerIllustration',
 	REGISTER_CONFIGURATION_ILLUSTRATION: 'registerCongratulationIllustration',
@@ -27,6 +35,5 @@ export const ICON_NAMES = {
 	ANDROID_DOWNLOAD: 'android_download',
 	HAMBURGER: 'hamburger',
 	CROSS: 'cross',
-	GOOGLE: 'google',
-	FACEBOOK: 'facebook',
+	...NEW_ICON_NAMES,
 }

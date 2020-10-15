@@ -93,4 +93,8 @@ const Users = (): ReactElement | null | string => {
 	)
 }
 
+export const getInitialProps = (): any => {
+	return { namespacesRequired: ['common'] }
+}
+
 export default Users

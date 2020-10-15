@@ -7,3 +7,8 @@ type User {
 type Query {
 	viewer: User!
 }
+
+enum UsersProductsTypes {
+	COMMERCIAL
+	PUBLIC
+}

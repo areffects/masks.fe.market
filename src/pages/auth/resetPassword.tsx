@@ -1,14 +1,13 @@
 import styled from 'styled-components'
-import React, { ReactElement } from 'react'
+import React from 'react'
 import { Button, Form, Input } from 'antd'
 import Link from 'src/components/Link'
 import { useMutation } from '@apollo/react-hooks'
-import { AUTH_RESET_PASSWORD, AUTH_SIGN_UP } from 'src/constants/paths'
-import { withTranslation } from 'react-i18next'
+import { AUTH_SIGN_IN } from 'src/constants/paths'
+import { withTranslation } from 'i18n'
 import { LOGIN_USER } from 'src/lib/gqls/users'
-import Icon from 'src/components/Icon/Icon'
 import { WrapContainer } from 'src/components/AuthWrapper'
-import { LockOutlined, MailOutlined } from '@ant-design/icons'
+import { MailOutlined } from '@ant-design/icons'
 import { globalNotify } from 'src/utils/notifications'
 
 const ContainerAuthBlock = styled(Form)`
@@ -32,22 +31,13 @@ const Center = styled.p`
 	text-align: center;
 `
 
-const SocBlock = styled.div`
-	display: flex;
-	margin-top: 1rem;
-	svg {
-		margin-right: 1rem;
-	}
-`
-
 const LoginBlock = styled.div`
 	display: flex;
-	justify-content: space-between;
+	justify-content: flex-end;
 	margin-bottom: 2rem;
-	align-items: flex-end;
 `
 
-const SignIn = ({ t }: any): ReactElement => {
+const ResetPassword: React.FC = ({ t }: any) => {
 	const [
 		loginUser,
 		{
@@ -82,7 +72,7 @@ const SignIn = ({ t }: any): ReactElement => {
 	return (
 		<WrapContainer>
 			<ContainerAuthBlock name="basic" onFinish={handleLogin}>
-				<AuthHeader>{t('signIn')}</AuthHeader>
+				<AuthHeader>{t('reset')}</AuthHeader>
 				<Form.Item
 					name="email"
 					rules={[
@@ -98,22 +88,14 @@ const SignIn = ({ t }: any): ReactElement => {
 				>
 					<Input placeholder={t('email')} prefix={<MailOutlined />} />
 				</Form.Item>
-				<Form.Item name="password" rules={[{ required: true, message: t('invalidPassword') }]}>
-					<Input.Password prefix={<LockOutlined />} placeholder={t('password')} />
-				</Form.Item>
-				<Link href={AUTH_RESET_PASSWORD}>{t('forgotPassword')}</Link>
-				<LoginBlock>
-					<SocBlock>
-						<Icon name="google" />
-						<Icon name="facebook" />
-					</SocBlock>
-					<Button disabled={loading} htmlType="submit">
-						{t('signInButton')}
+				<LoginBlock style={{ textAlign: 'right' }}>
+					<Button disabled={loading} htmlType="submit" type="primary" danger>
+						{t('resetButton')}
 					</Button>
 				</LoginBlock>
 				<Center>
-					{t('dontHaveAccount')}
-					<Link href={AUTH_SIGN_UP}>{t('registerHere')}</Link>
+					{t('alreadyHaveAccount')}
+					<Link href={AUTH_SIGN_IN}>{t('signIn')}</Link>
 				</Center>
 			</ContainerAuthBlock>
 		</WrapContainer>
@@ -122,4 +104,4 @@ const SignIn = ({ t }: any): ReactElement => {
 export const getInitialProps = (): any => {
 	return { namespacesRequired: ['common'] }
 }
-export default withTranslation('common')(SignIn)
+export default withTranslation('common')(ResetPassword)

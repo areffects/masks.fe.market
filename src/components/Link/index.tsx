@@ -1,15 +1,16 @@
 import styled from 'styled-components'
-import { useRouter } from 'next/router'
-import { ReactElement } from 'react'
 import { IProps } from './types'
+import Link from 'next/link'
 
-const LinkStyle = styled.a`
+export const StyledLink = styled.a`
 	cursor: pointer;
-	color: ${({ theme }) => theme.color.linkBlue};
 `
 
-const Link = ({ to, children }: IProps): ReactElement => {
-	const router = useRouter()
-	return <LinkStyle onClick={() => router.push(to)}>{children}</LinkStyle>
+const CustomLink: React.FC<IProps> = ({ href, children }) => {
+	return (
+		<Link href={href} passHref>
+			<StyledLink>{children}</StyledLink>
+		</Link>
+	)
 }
-export default Link
+export default CustomLink

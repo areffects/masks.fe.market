@@ -1,5 +1,6 @@
 {
 	"hello": "Hello!",
+	"effect": "Effect",
 	"forgotPassword": "Forgot password?",
 	"registerHere": "Register here!",
 	"invalidEmail": "Invalid email address!",
@@ -7,6 +8,7 @@
 	"invalidMessage": "Invalid message!",
 	"typeHere": "Type here...",
 	"signIn": "Log in",
+	"reset": "Reset password",
 	"firstName": "First name:",
 	"lastName": "Last name:",
 	"userName": "Temporary user name:",
@@ -19,6 +21,7 @@
 	"password": "Password:",
 	"rePassword": "Retype password:",
 	"signInButton": "SIGN IN",
+	"resetButton": "RESET",
 	"signUpButton": "SIGN UP",
 	"passwordError": "Passwords is not same!"
 }

@@ -1,23 +1,22 @@
-import { ReactElement } from 'react'
+import { I18n } from 'next-i18next'
 import { RU, EN } from 'src/constants/common/lang'
 import styled from 'styled-components'
-import { i18n } from '../../../i18n'
+import { withTranslation } from '../../../i18n'
 
-const LangStyle = styled.div`
-	position: fixed;
-	top: 10rem;
-	right: 10rem;
-`
+const LangStyle = styled.div``
+
 const LangButton = styled.button`
 	text-transform: uppercase;
-	padding: 1rem;
-	background: ${({ theme }) => theme.color.white};
-	box-shadow: 0px 0.4rem 1rem rgba(0, 0, 0, 0.25);
-	border-radius: 1rem;
+	background: transparent;
 	font-size: 1.4rem;
+	color: ${({ theme }) => theme.color.black};
+	border: 0.1rem solid white;
+	padding: 0.8rem;
+	border-radius: 1rem;
+	background: white;
 `
 
-const Lang = (): ReactElement => (
+const Lang: React.FC<{ i18n: I18n }> = ({ i18n }) => (
 	<LangStyle>
 		<LangButton
 			onClick={() => {
@@ -28,4 +27,4 @@ const Lang = (): ReactElement => (
 		</LangButton>
 	</LangStyle>
 )
-export default Lang
+export default withTranslation('common')(Lang)

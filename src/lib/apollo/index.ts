@@ -1,7 +1,7 @@
 import { IncomingMessage, ServerResponse } from 'http'
 import { useMemo } from 'react'
 import { ApolloClient, InMemoryCache, NormalizedCacheObject } from '@apollo/client'
-import { IS_LOGGED_IN } from 'src/constants/graphql/queries'
+import { IS_LOGGED_IN } from 'src/lib/gqls/auth'
 import { AUTH_TOKEN } from 'src/constants/storage/ls'
 
 let apolloClient: ApolloClient<NormalizedCacheObject> | undefined
@@ -41,7 +41,6 @@ const createApolloClient = (context?: ResolverContext) => {
 		cache.writeQuery({
 			query: IS_LOGGED_IN,
 			data: {
-				hello: 'world',
 				isLoggedIn: !!localStorage.getItem(AUTH_TOKEN),
 			},
 		})
@@ -74,6 +73,7 @@ export const initializeApollo = (
 	return _apolloClient
 }
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const useApollo = (initialState: any): ApolloClient<any> => {
 	const store = useMemo(() => initializeApollo(initialState), [initialState])
 	return store

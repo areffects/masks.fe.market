@@ -1,24 +1,24 @@
-import React, { ReactElement } from 'react'
-import styled from 'styled-components'
+import { useQuery } from '@apollo/react-hooks'
+import React from 'react'
+import { GET_PRODUCTS } from 'src/lib/gqls/products'
 
-import Head, { IHead } from 'components/Layout/Head'
-import ImageShadows from 'components/Partials/ImageShadows'
-
-const headProps: IHead = {
-	pageTitle: 'Home page | Cat',
-	pageDescription: 'The cat',
+const Marketplace: React.FC = () => {
+	const { loading, error, data } = useQuery(GET_PRODUCTS)
+	if (loading) return <div>Loading...</div>
+	if (error) return <div>{`${error}`}</div>
+	const { findAllUsersProducts } = data
+	return (
+		<div>
+			{findAllUsersProducts.map(({ userName, role }: any, index: number) => (
+				<div key={index}>
+					<p>User name: {userName}</p>
+					<p>Role: {role}</p>
+				</div>
+			))}
+		</div>
+	)
 }
-
-const StyledSection = styled.section`
-	padding: 30px;
-`
-
-const Home = (): ReactElement => (
-	<StyledSection>
-		<Head {...headProps} />
-		<h1>Hey 👋. Its market</h1>
-		<ImageShadows src="/static/images/cat.jpg" width="280px" alt="Happy cat" />
-	</StyledSection>
-)
-
-export default Home
+export const getInitialProps = (): any => {
+	return { namespacesRequired: ['common'] }
+}
+export default Marketplace

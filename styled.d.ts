@@ -22,7 +22,24 @@ declare module 'styled-components' {
 			error: string
 		}
 		font?: {
-			family: string
+			boldCondensed?: string
+			blackCondensed?: string
+			boldItalic?: string
+			lightItalic?: string
+			thinItalic?: string
+			heavy?: string
+			medium?: string
+			ultraLight?: string
+			black?: string
+			heavyItalic?: string
+			mediumItalic?: string
+			ultraLightItalic?: string
+			blackItalic?: string
+			italic?: string
+			roman?: string
+			bold?: string
+			light?: string
+			thin?: string
 		}
 		media?: IThemeMedia
 	}

@@ -4,6 +4,7 @@ import { ServerStyleSheet } from 'styled-components'
 interface InitialProps {
 	styles: JSX.Element
 	html: string
+	namespacesRequired: string[]
 	head?: (JSX.Element | null)[] | undefined
 }
 
@@ -20,6 +21,7 @@ class NextDocument extends Document {
 			const initialProps = await Document.getInitialProps(ctx)
 			return {
 				...initialProps,
+				namespacesRequired: ['common'],
 				styles: (
 					<>
 						{initialProps.styles}

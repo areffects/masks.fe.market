@@ -9,15 +9,16 @@ import theme from 'styles/theme'
 
 import 'styles/css/global.css'
 import { ReactElement } from 'react'
+import Layout from 'src/components/Layout'
 
 const NextApp = ({ Component, pageProps }: AppProps): ReactElement => {
 	const apolloClient = useApollo(pageProps.initialApolloState)
 	return (
 		<ApolloProvider client={apolloClient}>
 			<ThemeProvider theme={theme}>
-				{/* <Layout> */}
-				<Component {...pageProps} />
-				{/* </Layout> */}
+				<Layout>
+					<Component {...pageProps} />
+				</Layout>
 			</ThemeProvider>
 		</ApolloProvider>
 	)

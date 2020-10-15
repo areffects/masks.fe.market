@@ -4,7 +4,9 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 })
 const { nextI18NextRewrites } = require('next-i18next/rewrites')
 
-const localeSubpaths = {}
+const localeSubpaths = {
+	staticFolder: '/static',
+}
 const isProd = process.env.NODE_ENV === 'production'
 
 const nextConfig = {
