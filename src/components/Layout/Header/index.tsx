@@ -31,7 +31,7 @@ const StyledLink = styled.a`
 	padding-bottom: 1rem;
 	transition: border-bottom 0.6s linear;
 	border-bottom: 0px;
-	${(props) => {
+	${(props: any) => {
 		if (props['data-active']) {
 			return `
 			font-family: '${props.theme.font?.bold}', sans-serif;

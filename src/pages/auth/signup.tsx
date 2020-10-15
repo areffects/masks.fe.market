@@ -6,7 +6,7 @@ import GoogleIcon from '../../components/Icon/icons/google.svg'
 import FacebookIcon from '../../components/Icon/icons/facebook.svg'
 import Link from 'src/components/Link'
 import { useMutation } from '@apollo/react-hooks'
-import { AUTH_SIGN_IN } from 'src/constants/paths'
+import { AUTH_SIGN_IN, MARKETPLACE } from 'src/constants/paths'
 import { withTranslation } from 'i18n'
 import { REGISTER_USER } from 'src/lib/gqls/users'
 import { useRouter } from 'next/router'
@@ -55,7 +55,7 @@ const SignUp = ({ t }: any): ReactElement => {
 			globalNotify({ type: 'error', header: error.message })
 		},
 		onCompleted() {
-			push(PRODUCTS)
+			push(MARKETPLACE)
 		},
 	})
 	const defaultUsername = v4().substr(0, 7)
