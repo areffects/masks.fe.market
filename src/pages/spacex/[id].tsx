@@ -1,4 +1,4 @@
-import { withTranslation } from 'react-i18next'
+import { withTranslation } from 'i18n'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { useRouter } from 'next/router'
 // import { NextPage, NextPageContext } from 'next'

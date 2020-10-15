@@ -1,4 +1,4 @@
-const NextI18Next = require('next-i18next/dist/commonjs').default
+const NextI18Next = require('next-i18next').default
 
 const config = require('next/config').default()
 const path = require('path')

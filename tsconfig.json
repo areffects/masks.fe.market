@@ -33,7 +33,8 @@
 			"stories/*": ["src/stories/*"],
 			"styles/*": ["src/styles/*"],
 			"tools/*": ["src/tools/*"],
-			"types/*": ["src/types/*"]
+			"types/*": ["src/types/*"],
+			"i18n": ["i18n.js"]
 		}
 	},
 	"exclude": ["node_modules"],

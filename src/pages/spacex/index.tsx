@@ -33,7 +33,7 @@ export const getInitialProps = (): any => {
 }
 
 export async function getStaticProps(): Promise<{ props: { spacex: SpaceXRoot } }> {
-	http.createServer((req, res) => res.end('<p>END</p>')).listen(4015).addListener
+	http.createServer((_, res) => res.end('<p>END</p>')).listen(4015).addListener
 	const data = await fetch('https://api.spacexdata.com/v4/launches')
 	const spacex = await data.json()
 	return { props: { spacex } }

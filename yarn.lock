@@ -3202,11 +3202,6 @@
   dependencies:
     "@types/node" "*"
 
-"@types/i18n@^0.8.7":
-  version "0.8.7"
-  resolved "https://registry.yarnpkg.com/@types/i18n/-/i18n-0.8.7.tgz#f8aa1eba769747568dcea94e57a96bc5f6a852b6"
-  integrity sha512-Twh+PFhbjv+HBls9RJV81dsdhkdW2U2sBCvU0xQYreTWx+e6RtcPIFAXU11okvvTKYsVaJMVB8NgedUP+vvR5w==
-
 "@types/is-function@^1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@types/is-function/-/is-function-1.0.0.tgz#1b0b819b1636c7baf0d6785d030d12edf70c3e83"
@@ -12339,7 +12334,7 @@ react-hotkeys@2.0.0:
   dependencies:
     prop-types "^15.6.1"
 
-react-i18next@^11.7.0, react-i18next@^11.7.3:
+react-i18next@^11.7.0:
   version "11.7.3"
   resolved "https://registry.yarnpkg.com/react-i18next/-/react-i18next-11.7.3.tgz#256461c46baf5b3208c3c6860ca4e569fc7ed053"
   integrity sha512-7sYZqVZgdaS9Z0ZH6nuJFErCD0zz5wK3jR4/xCrWjZcxHHF3GRu7BXdicbSPprZV4ZYz7LJzxxMHO7dg5Qb70A==

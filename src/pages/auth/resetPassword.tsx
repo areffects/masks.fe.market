@@ -4,11 +4,12 @@ import { Button, Form, Input } from 'antd'
 import Link from 'src/components/Link'
 import { useMutation } from '@apollo/react-hooks'
 import { AUTH_SIGN_IN } from 'src/constants/paths'
-import { withTranslation } from 'i18n'
 import { LOGIN_USER } from 'src/lib/gqls/users'
 import { WrapContainer } from 'src/components/AuthWrapper'
 import { MailOutlined } from '@ant-design/icons'
 import { globalNotify } from 'src/utils/notifications'
+import { WithTranslation } from 'next-i18next'
+import { withTranslation } from 'i18n'
 
 const ContainerAuthBlock = styled(Form)`
 	padding: 24px 32px;
@@ -37,7 +38,7 @@ const LoginBlock = styled.div`
 	margin-bottom: 2rem;
 `
 
-const ResetPassword: React.FC = ({ t }: any) => {
+const ResetPassword: React.FC<WithTranslation> = ({ t }) => {
 	const [
 		loginUser,
 		{
