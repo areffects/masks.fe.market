@@ -63,9 +63,9 @@ const StyledBurger = styled.div`
 		display: block;
 	}
 `
-const PrivateAuthRoute: React.FC = ({ children }) => {
+const PrivateAuthRoute: React.FC<any> = ({ children }) => {
 	const router = useRouter()
-	return router.route.includes(ROUTES.AUTH) ? <></> : children
+	return router.route.includes(ROUTES.AUTH) ? null : children
 }
 
 const Header: React.FC = () => {

@@ -76,8 +76,12 @@ const ImageUploader: React.FC<IImageUploader> = ({ name, listType = 'picture-car
 			</Col>
 			{fileData.imageUrl && (
 				<Col span={4}>
-					<Icon name="eye" onClick={() => setPreviewVisible(true)} />
-					<Icon name="trash" onClick={() => setFileData({})} />
+					<a onClick={() => setPreviewVisible(true)}>
+						<Icon name="eye" />
+					</a>
+					<a onClick={() => setFileData({})}>
+						<Icon name="trash" />
+					</a>
 				</Col>
 			)}
 			<Modal
