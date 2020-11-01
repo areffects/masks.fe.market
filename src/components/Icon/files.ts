@@ -32,6 +32,19 @@ import masksLogo from './icons/new/masksLogo.svg'
 import bookmark from './icons/new/bookmark.svg'
 import shoppingCart from './icons/new/shoppingCart.svg'
 import user from './icons/new/user.svg'
+import userWithChevron from './icons/new/userWithChevron.svg'
+import annotation from './icons/new/annotation.svg'
+import eye from './icons/new/eye.svg'
+import truck from './icons/new/truck.svg'
+import beaker from './icons/new/beaker.svg'
+import cube from './icons/new/cube.svg'
+import gift from './icons/new/gift.svg'
+import identification from './icons/new/identification.svg'
+import currencyDollar from './icons/new/currency-dollar.svg'
+import creditCard from './icons/new/credit-card.svg'
+import search from './icons/new/search.svg'
+import upload from './icons/new/upload.svg'
+import trash from './icons/new/trash.svg'
 
 const nameToFile = {
 	[ICON_NAMES.GOOGLE]: google,
@@ -40,6 +53,20 @@ const nameToFile = {
 	[ICON_NAMES.BOOKMARK]: bookmark,
 	[ICON_NAMES.SHOPPING_CART]: shoppingCart,
 	[ICON_NAMES.USER]: user,
+	[ICON_NAMES.USER_WITH_CHEVRON]: userWithChevron,
+	[ICON_NAMES.ANNOTATION]: annotation,
+	[ICON_NAMES.EYE]: eye,
+	[ICON_NAMES.TRUCK]: truck,
+	[ICON_NAMES.BEAKER]: beaker,
+	[ICON_NAMES.CUBE]: cube,
+	[ICON_NAMES.GIFT]: gift,
+	[ICON_NAMES.BOOKMARK]: bookmark,
+	[ICON_NAMES.IDENTIFICATION]: identification,
+	[ICON_NAMES.CURRENCY_DOLLAR]: currencyDollar,
+	[ICON_NAMES.CREDIT_CARD]: creditCard,
+	[ICON_NAMES.SEARCH]: search,
+	[ICON_NAMES.UPLOAD]: upload,
+	[ICON_NAMES.TRASH]: trash,
 }
 
 const oldNameToFile = {

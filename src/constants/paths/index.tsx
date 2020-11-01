@@ -1,5 +1,17 @@
-export const MARKETPLACE = '/marketplace'
-export const AUTH_SIGN_IN = '/auth/signin'
-export const AUTH_RESET_PASSWORD = '/auth/resetPassword'
-export const AUTH_SIGN_UP = '/auth/signup'
-export const AUTH = '/auth'
+export const ROUTES = {
+	MARKETPLACE: '/',
+	AUTH_SIGN_IN: '/auth/signin',
+	AUTH_RESET_PASSWORD: '/auth/resetPassword',
+	AUTH_SIGN_UP: '/auth/signup',
+	AUTH_LOGOUT: '/auth/logout',
+	AUTH: '/auth',
+	CART: '/cart',
+	USER: '/user',
+	PROFILE: '/user/profile',
+	CARDS: '/user/cards',
+	COMMENTS: '/user/comments',
+	FAVOURITES: '/user/favourites',
+	ORDERS: '/user/orders',
+	PREMIUM: '/user/premium',
+	VIEWED: '/user/viewed',
+}

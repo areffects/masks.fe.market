@@ -5,6 +5,19 @@ const NEW_ICON_NAMES = {
 	BOOKMARK: 'bookmark',
 	SHOPPING_CART: 'shoppingCart',
 	USER: 'user',
+	USER_WITH_CHEVRON: 'userWithChevron',
+	ANNOTATION: 'annotation',
+	EYE: 'eye',
+	TRUCK: 'truck',
+	BEAKER: 'beaker',
+	CUBE: 'cube',
+	GIFT: 'gift',
+	IDENTIFICATION: 'identification',
+	CURRENCY_DOLLAR: 'currency-dollar',
+	CREDIT_CARD: 'credit-card',
+	SEARCH: 'search',
+	UPLOAD: 'upload',
+	TRASH: 'trash',
 }
 
 export const ICON_NAMES = {

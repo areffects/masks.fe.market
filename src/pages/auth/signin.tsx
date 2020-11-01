@@ -1,15 +1,14 @@
 import styled from 'styled-components'
-import React, { ReactElement } from 'react'
+import React from 'react'
 import { Button, Form, Input } from 'antd'
 import Link from 'src/components/Link'
-import { useMutation } from '@apollo/react-hooks'
-import { AUTH_RESET_PASSWORD, AUTH_SIGN_UP } from 'src/constants/paths'
+import { ROUTES } from 'src/constants/paths'
 import { withTranslation } from 'i18n'
-import { LOGIN_USER } from 'src/lib/gqls/users'
 import Icon from 'src/components/Icon/Icon'
 import { WrapContainer } from 'src/components/AuthWrapper'
 import { LockOutlined, MailOutlined } from '@ant-design/icons'
-import { globalNotify } from 'src/utils/notifications'
+import { WithTranslation } from 'next-i18next'
+import { useLoginUser } from 'src/lib/gqls/auth/hooks'
 
 const ContainerAuthBlock = styled(Form)`
 	padding: 24px 32px;
@@ -29,7 +28,11 @@ const AuthHeader = styled.div`
 `
 
 const Center = styled.p`
-	text-align: center;
+	display: flex;
+	justify-content: center;
+	span {
+		margin-right: 0.4rem;
+	}
 `
 
 const SocBlock = styled.div`
@@ -47,41 +50,15 @@ const LoginBlock = styled.div`
 	align-items: flex-end;
 `
 
-const SignIn = ({ t }: any): ReactElement => {
-	const [
-		loginUser,
-		{
-			// data,
-			loading,
-		},
-	] = useMutation(LOGIN_USER, {
-		update() // cache,
-		// {
-		// 	data: {
-		// 		loginUser: { token },
-		// 	},
-		// },
-		{
-			// cache.modify({
-			// 	fields: {
-			// 		loginUser(value, details) {
-			// 			console.log('value :>> ', value)
-			// 			console.log('details :>> ', details)
-			// 			return token
-			// 		},
-			// 	},
-			// })
-		},
-		onError(error) {
-			globalNotify({ type: 'error', header: error.message })
-		},
-	})
+const SignIn: React.FC<WithTranslation> = ({ t }) => {
+	const { loading, loginUser } = useLoginUser()
 	const handleLogin = (values: any) => {
 		loginUser({ variables: { email: values.email, password: values.password } })
 	}
+
 	return (
 		<WrapContainer>
-			<ContainerAuthBlock name="basic" onFinish={handleLogin}>
+			<ContainerAuthBlock name="signin" onFinish={handleLogin}>
 				<AuthHeader>{t('signIn')}</AuthHeader>
 				<Form.Item
 					name="email"
@@ -101,19 +78,19 @@ const SignIn = ({ t }: any): ReactElement => {
 				<Form.Item name="password" rules={[{ required: true, message: t('invalidPassword') }]}>
 					<Input.Password prefix={<LockOutlined />} placeholder={t('password')} />
 				</Form.Item>
-				<Link href={AUTH_RESET_PASSWORD}>{t('forgotPassword')}</Link>
+				<Link href={ROUTES.AUTH_RESET_PASSWORD}>{t('resetPassword')}</Link>
 				<LoginBlock>
 					<SocBlock>
 						<Icon name="google" />
 						<Icon name="facebook" />
 					</SocBlock>
-					<Button disabled={loading} htmlType="submit">
+					<Button htmlType="submit" loading={loading}>
 						{t('signInButton')}
 					</Button>
 				</LoginBlock>
 				<Center>
-					{t('dontHaveAccount')}
-					<Link href={AUTH_SIGN_UP}>{t('registerHere')}</Link>
+					<span>{t('dontHaveAccount')}</span>
+					<Link href={ROUTES.AUTH_SIGN_UP}>{t('registerHere')}</Link>
 				</Center>
 			</ContainerAuthBlock>
 		</WrapContainer>

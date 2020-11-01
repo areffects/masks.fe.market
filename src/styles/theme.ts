@@ -15,10 +15,12 @@ const theme: DefaultTheme = {
 	color: {
 		primary: '#0e93f7',
 		black: '#3c3c3c',
+		lightGray: '#828282',
 		gray: '#BDBDBD',
 		white: 'white',
 		linkBlue: '#4D69FF',
 		error: '#ff4c4c',
+		blue: '#5656ff',
 	},
 	font: {
 		boldCondensed: 'HelveticaNeueBoldCondensed',

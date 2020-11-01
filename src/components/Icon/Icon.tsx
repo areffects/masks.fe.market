@@ -5,25 +5,28 @@ import styled from 'styled-components'
 interface Props {
 	name: string
 }
-const IconWrapper = styled.div`
-	svg {
-		cursor: pointer;
-		&:hover {
-			opacity: 0.8;
-		}
+
+const StyledIcon = styled.span`
+	cursor: pointer;
+	display: flex;
+	color: ${({ theme }) => theme.color.black};
+	&:hover {
+		opacity: 0.8;
 	}
 `
-
-const Icon: React.FC<Props> = ({ name, ...props }) => {
+const NativeIconFile: React.FC<Props> = ({ name, ...props }) => {
 	const IconFile: any = nameToFile[name]
 	if (IconFile) {
 		return (
-			<IconWrapper>
+			<StyledIcon>
 				<IconFile {...props} />
-			</IconWrapper>
+			</StyledIcon>
 		)
 	}
 	return <div>Icon not found</div>
 }
 
-export default Icon
+// const IconWrapper = React.forwardRef((props, ref) => {
+// 	return <Icon ref={ref} {...props} />
+// })
+export default NativeIconFile

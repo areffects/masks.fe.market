@@ -39,6 +39,7 @@ const Head: React.FunctionComponent<IHead> = ({
 			<meta property="og:type" content="website" />
 			{canonicalLink && <meta property="og:url" content={canonicalLink} />}
 			{hideFromSearch && <meta name="robots" content="noindex, nofollow" />}
+			<link rel="shortcut icon" href="/favicon.ico" />
 		</NextHead>
 	)
 }

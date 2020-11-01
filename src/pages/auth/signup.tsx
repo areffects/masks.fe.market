@@ -2,17 +2,13 @@ import styled from 'styled-components'
 import { v4 } from 'uuid'
 import { Button, Form, Input } from 'antd'
 import React, { ReactElement } from 'react'
-import GoogleIcon from '../../components/Icon/icons/google.svg'
-import FacebookIcon from '../../components/Icon/icons/facebook.svg'
 import Link from 'src/components/Link'
-import { useMutation } from '@apollo/react-hooks'
-import { AUTH_SIGN_IN, MARKETPLACE } from 'src/constants/paths'
+import { ROUTES } from 'src/constants/paths'
 import { withTranslation } from 'i18n'
-import { REGISTER_USER } from 'src/lib/gqls/users'
-import { useRouter } from 'next/router'
 import { UserOutlined, LockOutlined, MailOutlined } from '@ant-design/icons'
 import { WrapContainer } from 'src/components/AuthWrapper'
-import { globalNotify } from 'src/utils/notifications'
+import Icon from 'src/components/Icon/Icon'
+import { useRegisterUser } from 'src/lib/gqls/auth/hooks'
 
 const ContainerFormBlock = styled(Form)`
 	padding: 24px 32px;
@@ -32,7 +28,11 @@ const AuthHeader = styled.div`
 `
 
 const Center = styled.p`
-	text-align: center;
+	display: flex;
+	justify-content: center;
+	span {
+		margin-right: 0.4rem;
+	}
 `
 
 const SocBlock = styled.div`
@@ -49,15 +49,7 @@ const LoginBlock = styled.div`
 `
 
 const SignUp = ({ t }: any): ReactElement => {
-	const { push } = useRouter()
-	const [registerUser, { loading }] = useMutation(REGISTER_USER, {
-		onError(error) {
-			globalNotify({ type: 'error', header: error.message })
-		},
-		onCompleted() {
-			push(MARKETPLACE)
-		},
-	})
+	const { registerUser, loading } = useRegisterUser()
 	const defaultUsername = v4().substr(0, 7)
 	const handleLogin = ({ firstName, lastName, email, password }: any) => {
 		registerUser({ variables: { userName: defaultUsername, firstName, lastName, email, password } })
@@ -108,8 +100,8 @@ const SignUp = ({ t }: any): ReactElement => {
 				</Form.Item>
 				<LoginBlock>
 					<SocBlock>
-						<GoogleIcon />
-						<FacebookIcon />
+						<Icon name="google" />
+						<Icon name="facebook" />
 					</SocBlock>
 					<Button disabled={loading} htmlType="submit">
 						{t('signUpButton')}
@@ -117,7 +109,7 @@ const SignUp = ({ t }: any): ReactElement => {
 				</LoginBlock>
 				<Center>
 					{t('alreadyHaveAccount')}
-					<Link href={AUTH_SIGN_IN}>{t('signIn')}</Link>
+					<Link href={ROUTES.AUTH_SIGN_IN}>{t('signIn')}</Link>
 				</Center>
 			</ContainerFormBlock>
 		</WrapContainer>

@@ -1,15 +1,23 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import Icon from 'src/components/Icon/Icon'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { AUTH } from 'src/constants/paths'
+import { ROUTES } from 'src/constants/paths'
+import { MenuOutlined } from '@ant-design/icons'
+import { Menu, Dropdown } from 'antd'
+import StyledLink from 'src/components/StyledLink'
+import CustomLink from 'src/components/Link'
+import { AUTH_TOKEN } from 'src/constants/storage/ls'
+import { useApolloClient } from '@apollo/react-hooks'
+import { useGetMe } from 'src/lib/gqls/auth/hooks'
 
 const StyledHeader = styled.header`
 	color: green;
 	position: absolute;
 	width: 100%;
 `
+
 const Nav = styled.nav`
 	height: 8rem;
 	display: flex;
@@ -25,36 +33,40 @@ const LogoIcon = styled(Icon)`
 const NavLink = styled.div`
 	margin-right: 4.8rem;
 `
-const StyledLink = styled.a`
-	color: black;
-	font-size: 1.6rem;
-	padding-bottom: 1rem;
-	transition: border-bottom 0.6s linear;
-	border-bottom: 0px;
-	${(props: any) => {
-		if (props['data-active']) {
-			return `
-			font-family: '${props.theme.font?.bold}', sans-serif;
-			border-bottom: 2px solid black;
-		`
-		}
-		return ``
-	}}
+const StyledUser = styled.div`
+	display: flex;
+	align-items: center;
 	&:hover {
-		color: black;
-		border-bottom: 2px solid black;
+		opacity: 0.8;
 	}
 `
 
 const RightBlock = styled.div`
 	display: flex;
 	align-items: center;
+	& > * {
+		margin-right: 1.6rem;
+	}
+	@media (max-width: 768px) {
+		display: none;
+	}
 `
 const LeftBlock = styled.div`
 	display: flex;
 	align-items: center;
 `
 type NavDataType = { path: string; label: string }
+
+const StyledBurger = styled.div`
+	display: none;
+	@media (max-width: 768px) {
+		display: block;
+	}
+`
+const PrivateAuthRoute: React.FC = ({ children }) => {
+	const router = useRouter()
+	return router.route.includes(ROUTES.AUTH) ? <></> : children
+}
 
 const Header: React.FC = () => {
 	const navData: NavDataType[] = [
@@ -72,33 +84,68 @@ const Header: React.FC = () => {
 		},
 	]
 	const router = useRouter()
-	if (router.route.includes(AUTH)) {
-		return null
-	}
-	return (
-		<StyledHeader>
-			<Nav>
-				<LeftBlock>
-					<LogoIcon name="masksLogo" />
-					{navData.map(({ label, path }: NavDataType) => (
-						<NavLink key={label}>
-							<Link href={path}>
-								<StyledLink data-active={path === router.route}>{label}</StyledLink>
-							</Link>
-						</NavLink>
-					))}
-				</LeftBlock>
-				<RightBlock>
-					<Icon name="bookmark" />
-					<Icon name="shoppingCart" />
-					<Icon name="user" />
-				</RightBlock>
 
-				{/* <Link href="/auth/signin">SignIn</Link> */}
-				{/* <Link href="/auth/signup">SignUp</Link> */}
-				{/* <Link href="/spacex">SpaceX</Link> */}
-			</Nav>
-		</StyledHeader>
+	const client = useApolloClient()
+
+	const { refetch, data } = useGetMe()
+	useEffect(() => {
+		refetch()
+	}, [router.pathname])
+
+	const handleLogout = () => {
+		localStorage.removeItem(AUTH_TOKEN)
+		client.clearStore()
+		router.push(ROUTES.MARKETPLACE)
+	}
+	const MenuWrapper = (
+		<Menu>
+			<Menu.Item>
+				<CustomLink href={ROUTES.PROFILE}>Profile</CustomLink>
+			</Menu.Item>
+			<Menu.Item onClick={handleLogout}>Logout</Menu.Item>
+		</Menu>
+	)
+	return (
+		<PrivateAuthRoute>
+			<StyledHeader>
+				<Nav>
+					<LeftBlock>
+						<LogoIcon name="masksLogo" />
+						{navData.map(({ label, path }: NavDataType) => (
+							<NavLink key={label}>
+								<Link href={path}>
+									<StyledLink active={path === router.route}>{label}</StyledLink>
+								</Link>
+							</NavLink>
+						))}
+					</LeftBlock>
+					<RightBlock>
+						<Icon name="bookmark" />
+						<Icon name="shoppingCart" />
+						<StyledUser>
+							{data ? (
+								<>
+									{data.getMe.firstName}
+									<Dropdown overlay={MenuWrapper} trigger={['click']}>
+										<Icon name="userWithChevron" />
+									</Dropdown>
+								</>
+							) : (
+								<CustomLink href={ROUTES.AUTH_SIGN_IN}>
+									<Icon name="userWithChevron" />
+								</CustomLink>
+							)}
+						</StyledUser>
+					</RightBlock>
+					<StyledBurger>
+						<MenuOutlined />
+					</StyledBurger>
+					{/* <Link href="/auth/signin">SignIn</Link> */}
+					{/* <Link href="/auth/signup">SignUp</Link> */}
+					{/* <Link href="/spacex">SpaceX</Link> */}
+				</Nav>
+			</StyledHeader>
+		</PrivateAuthRoute>
 	)
 }
 

@@ -1,8 +1,12 @@
 import { IncomingMessage, ServerResponse } from 'http'
 import { useMemo } from 'react'
-import { ApolloClient, InMemoryCache, NormalizedCacheObject } from '@apollo/client'
-import { IS_LOGGED_IN } from 'src/lib/gqls/auth'
+import { ApolloClient, ApolloLink, InMemoryCache, NormalizedCacheObject } from '@apollo/client'
+
+import { IS_LOGGED_IN } from 'src/lib/gqls/auth/query'
 import { AUTH_TOKEN } from 'src/constants/storage/ls'
+import { onErrorLink } from './links/errors'
+import { authLink } from './links/auth'
+import { httpLink } from './links/http'
 
 let apolloClient: ApolloClient<NormalizedCacheObject> | undefined
 
@@ -11,21 +15,14 @@ export type ResolverContext = {
 	res?: ServerResponse
 }
 
-const createIsomorphLink = (context: ResolverContext = {}) => {
+// const contextLink = () =>
+const createIsomorphLink = (context: ResolverContext = {}): ApolloLink => {
 	if (typeof window === 'undefined') {
 		const { SchemaLink } = require('apollo-link-schema')
 		const { schema } = require('./schema')
 		return new SchemaLink({ schema, context })
 	} else {
-		const { HttpLink } = require('apollo-link-http')
-		const token = localStorage.getItem(AUTH_TOKEN)
-		return new HttpLink({
-			uri: 'http://localhost:4000/graphql',
-			credentials: 'same-origin',
-			headers: {
-				authorization: token ? `Bearer ${token}` : '',
-			},
-		})
+		return ApolloLink.from([onErrorLink, authLink, httpLink])
 	}
 }
 
@@ -38,15 +35,25 @@ const createApolloClient = (context?: ResolverContext) => {
 		},
 	})
 	if (typeof window !== 'undefined') {
-		cache.writeQuery({
-			query: IS_LOGGED_IN,
-			data: {
-				isLoggedIn: !!localStorage.getItem(AUTH_TOKEN),
-			},
-		})
+		const token = localStorage.getItem(AUTH_TOKEN)
+		if (token) {
+			cache.writeQuery({
+				query: IS_LOGGED_IN,
+				data: {
+					isLoggedIn: token,
+				},
+			})
+		}
 	}
-
 	return new ApolloClient({
+		defaultOptions: {
+			query: {
+				errorPolicy: 'all',
+			},
+			mutate: {
+				errorPolicy: 'all',
+			},
+		},
 		ssrMode: typeof window === 'undefined',
 		link: createIsomorphLink(context),
 		cache,

@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { SmallErrorMessage } from '../ErrorMessage'
 import Label from '../Label'
 
-export const TextInputBlock = styled.input`
+export const TextInputBlock = styled.input<{ errors: any }>`
 	border: 1px solid #bdbdbd;
 	box-sizing: border-box;
 	border-radius: 0.4rem;
@@ -19,7 +19,7 @@ export const TextInputBlock = styled.input`
 		color: ${({ theme }) => theme.color.gray};
 	}
 	${(props: any) => {
-		if (props['data-errors']) {
+		if (props.errors) {
 			return `border-color: ${props.theme.color.error}`
 		}
 		return ``
@@ -54,7 +54,7 @@ const TextInput = ({
 				type={type}
 				name={name}
 				disabled={disabled}
-				data-errors={errors[name]}
+				errors={errors[name]}
 				ref={register({
 					required,
 					pattern: {

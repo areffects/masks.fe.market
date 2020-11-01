@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { createGlobalStyle } from 'styled-components'
 
 import Header from './Header'
 // import Spinner from './Spinner'
@@ -8,15 +8,24 @@ import Footer from './Footer'
 import Head, { IHead } from './Head'
 
 const Wrapper = styled.div`
-	background-color: #fafbfd;
+	background-color: white;
 `
 const headProps: IHead = {
 	pageTitle: 'Home page | Cat',
 	pageDescription: 'The cat',
 }
-
+const GlobalStyle = createGlobalStyle`
+span.anticon{
+	cursor: pointer;
+	color: ${({ theme }) => theme.color.black};
+	&:hover {
+		opacity: 0.8;
+	}
+}
+`
 const Layout: React.FC = ({ children }) => (
 	<Wrapper>
+		<GlobalStyle />
 		<Head {...headProps} />
 
 		<Header />
