@@ -1,0 +1,5 @@
+export const MARKETPLACE = '/marketplace'
+export const AUTH_SIGN_IN = '/auth/signin'
+export const AUTH_RESET_PASSWORD = '/auth/resetPassword'
+export const AUTH_SIGN_UP = '/auth/signup'
+export const AUTH = '/auth'

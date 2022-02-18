@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { ReactElement } from 'react'
 
-const Custom404 = () => {
+const Custom404 = (): ReactElement => {
 	return <h1>404 - Page Not Found</h1>
 }
 

@@ -1,2 +1,4 @@
 @import 'reset.css';
+@import 'fonts.css';
+@import '~antd/dist/antd.css';
 @import 'main.css';

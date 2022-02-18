@@ -8,10 +8,7 @@
 		"allowSyntheticDefaultImports": true,
 		"removeComments": false,
 		"jsx": "preserve",
-		"lib": [
-			"dom",
-			"es2017"
-		],
+		"lib": ["dom", "es2017"],
 		"module": "esnext",
 		"moduleResolution": "node",
 		"noEmit": true,
@@ -26,46 +23,20 @@
 		"rootDir": ".",
 		"baseUrl": ".",
 		"paths": {
-			"src/*": [
-				"src/*"
-			],
-			"components/*": [
-				"src/components/*"
-			],
-			"constants/*": [
-				"src/constants/*"
-			],
-			"hooks/*": [
-				"src/hooks/*"
-			],
-			"lib/*": [
-				"src/lib/*"
-			],
-			"pages/*": [
-				"src/pages/*"
-			],
-			"services/*": [
-				"src/services/*"
-			],
-			"stories/*": [
-				"src/stories/*"
-			],
-			"styles/*": [
-				"src/styles/*"
-			],
-			"tools/*": [
-				"src/tools/*"
-			],
-			"types/*": [
-				"src/types/*"
-			]
+			"src/*": ["src/*"],
+			"components/*": ["src/components/*"],
+			"constants/*": ["src/constants/*"],
+			"hooks/*": ["src/hooks/*"],
+			"lib/*": ["src/lib/*"],
+			"pages/*": ["src/pages/*"],
+			"services/*": ["src/services/*"],
+			"stories/*": ["src/stories/*"],
+			"styles/*": ["src/styles/*"],
+			"tools/*": ["src/tools/*"],
+			"types/*": ["src/types/*"],
+			"i18n": ["i18n.js"]
 		}
 	},
-	"exclude": [
-		"node_modules"
-	],
-	"include": [
-		"**/*.ts",
-		"**/*.tsx"
-	]
+	"exclude": ["node_modules"],
+	"include": ["**/*.ts", "**/*.tsx"]
 }
