@@ -1,5 +1,5 @@
-import { I18n } from 'next-i18next'
-import { RU, EN } from 'src/constants/common/lang'
+import { WithTranslation } from 'next-i18next'
+import { LANG } from 'src/constants/common/lang'
 import styled from 'styled-components'
 import { withTranslation } from '../../../i18n'
 
@@ -16,11 +16,11 @@ const LangButton = styled.button`
 	background: white;
 `
 
-const Lang: React.FC<{ i18n: I18n }> = ({ i18n }) => (
+const Lang: React.FC<WithTranslation> = ({ i18n }) => (
 	<LangStyle>
 		<LangButton
 			onClick={() => {
-				i18n.changeLanguage(i18n.language === RU ? EN : RU)
+				i18n.changeLanguage(i18n.language === LANG.Russian ? LANG.English : LANG.Russian)
 			}}
 		>
 			{i18n.language}

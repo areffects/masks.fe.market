@@ -2,14 +2,12 @@ import styled from 'styled-components'
 import React from 'react'
 import { Button, Form, Input } from 'antd'
 import Link from 'src/components/Link'
-import { useMutation } from '@apollo/react-hooks'
-import { AUTH_SIGN_IN } from 'src/constants/paths'
-import { LOGIN_USER } from 'src/lib/gqls/users'
+import { ROUTES } from 'src/constants/paths'
 import { WrapContainer } from 'src/components/AuthWrapper'
 import { MailOutlined } from '@ant-design/icons'
-import { globalNotify } from 'src/utils/notifications'
 import { WithTranslation } from 'next-i18next'
 import { withTranslation } from 'i18n'
+import { useResetPasswordUser } from 'src/lib/gqls/auth/hooks'
 
 const ContainerAuthBlock = styled(Form)`
 	padding: 24px 32px;
@@ -29,7 +27,8 @@ const AuthHeader = styled.div`
 `
 
 const Center = styled.p`
-	text-align: center;
+	display: flex;
+	justify-content: space-evenly;
 `
 
 const LoginBlock = styled.div`
@@ -39,36 +38,10 @@ const LoginBlock = styled.div`
 `
 
 const ResetPassword: React.FC<WithTranslation> = ({ t }) => {
-	const [
-		loginUser,
-		{
-			// data,
-			loading,
-		},
-	] = useMutation(LOGIN_USER, {
-		update() // cache,
-		// {
-		// 	data: {
-		// 		loginUser: { token },
-		// 	},
-		// },
-		{
-			// cache.modify({
-			// 	fields: {
-			// 		loginUser(value, details) {
-			// 			console.log('value :>> ', value)
-			// 			console.log('details :>> ', details)
-			// 			return token
-			// 		},
-			// 	},
-			// })
-		},
-		onError(error) {
-			globalNotify({ type: 'error', header: error.message })
-		},
-	})
+	const { loading, resetPassword } = useResetPasswordUser()
+
 	const handleLogin = (values: any) => {
-		loginUser({ variables: { email: values.email, password: values.password } })
+		resetPassword({ variables: { email: values.email, password: values.password } })
 	}
 	return (
 		<WrapContainer>
@@ -96,7 +69,7 @@ const ResetPassword: React.FC<WithTranslation> = ({ t }) => {
 				</LoginBlock>
 				<Center>
 					{t('alreadyHaveAccount')}
-					<Link href={AUTH_SIGN_IN}>{t('signIn')}</Link>
+					<Link href={ROUTES.AUTH_SIGN_IN}>{t('signIn')}</Link>
 				</Center>
 			</ContainerAuthBlock>
 		</WrapContainer>

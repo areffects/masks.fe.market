@@ -6,6 +6,7 @@ export const GET_PRODUCTS = gql`
 			_id
 			name
 			type
+			cost
 			createdAt
 		}
 	}
@@ -22,5 +23,11 @@ export const CREATE_PRODUCT = gql`
 export const DELETE_PRODUCT = gql`
 	mutation delete($id: String!) {
 		deleteUsersProducts(id: $id)
+	}
+`
+
+export const UPLOAD_FILE_USERS_PRODUCTS_SCREENSHOTS = gql`
+	mutation($file: Upload!) {
+		uploadFileUsersProductsScreenshots(file: $file)
 	}
 `

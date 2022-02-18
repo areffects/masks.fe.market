@@ -1,18 +1,14 @@
-import { useQuery } from '@apollo/react-hooks'
-import { useRouter } from 'next/router'
-import { useEffect } from 'react'
-import { IS_LOGGED_IN } from 'src/lib/gqls/auth'
-import { AUTH_SIGN_IN } from 'src/constants/paths'
+import { IAuthType } from 'src/contracts/auth'
+import { useGetMe, useLoggedIn } from 'src/lib/gqls/auth/hooks'
 
-const useAuth = (): any => {
-	const { data } = useQuery(IS_LOGGED_IN)
-	const router = useRouter()
-	useEffect(() => {
-		if (data && !data.isLoggedIn) {
-			router.push(AUTH_SIGN_IN)
-		}
-	}, [])
-	return { isLoggedIn: data && data.isLoggedIn }
+export const useAuth = ({ withRedirect = true }: IAuthType = {}): any => {
+	const { data: isLoggedIn, loading: isLoggedInLoading } = useLoggedIn({ withRedirect })
+	const { data: meData, loading: getMeLoading, client } = useGetMe()
+
+	return {
+		isLoggedIn,
+		meData,
+		loading: isLoggedInLoading || getMeLoading,
+		client,
+	}
 }
-
-export { useAuth }

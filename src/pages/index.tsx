@@ -1,6 +1,7 @@
 import { useQuery } from '@apollo/react-hooks'
 import React from 'react'
-import { GET_PRODUCTS } from 'src/lib/gqls/products'
+import { withTranslation } from 'i18n'
+import { GET_PRODUCTS } from 'src/lib/gqls/products/query'
 
 const Marketplace: React.FC = () => {
 	const { loading, error, data } = useQuery(GET_PRODUCTS)
@@ -21,4 +22,4 @@ const Marketplace: React.FC = () => {
 export const getInitialProps = (): any => {
 	return { namespacesRequired: ['common'] }
 }
-export default Marketplace
+export default withTranslation('common')(Marketplace)

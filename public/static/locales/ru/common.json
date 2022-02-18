@@ -1,7 +1,7 @@
 {
 	"hello": "Привет!",
 	"effect": "Эффект",
-	"forgotPassword": "Забыл пароль?",
+	"resetPassword": "Сбросить пароль?",
 	"registerHere": "Зарегистрируйся!",
 	"invalidEmail": "Не правильный email!",
 	"invalidPassword": "Не правильный пароль!",

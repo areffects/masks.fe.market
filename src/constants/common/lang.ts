@@ -1,2 +1,4 @@
-export const RU = 'ru'
-export const EN = 'en'
+export const LANG: Record<string, string> = {
+	Russian: 'ru',
+	English: 'en',
+}

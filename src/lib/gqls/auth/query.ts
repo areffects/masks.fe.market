@@ -1,5 +1,23 @@
 import gql from 'graphql-tag'
 
+export const IS_LOGGED_IN = gql`
+	query IsLoggedIn {
+		isLoggedIn @client(always: true)
+	}
+`
+
+export const GET_ME = gql`
+	query GetMe {
+		getMe {
+			_id
+			role
+			firstName
+			lastName
+			email
+		}
+	}
+`
+
 export const LOGIN_USER = gql`
 	mutation loginUser($email: String!, $password: String!) {
 		loginUser(data: { email: $email, password: $password }) {
@@ -26,21 +44,11 @@ export const REGISTER_USER = gql`
 			}
 		) {
 			_id
-			avatarId
 			status
+			lastName
 			userName
+			email
 			role
-		}
-	}
-`
-
-export const GET_USERS = gql`
-	{
-		findAllUser {
-			_id
-			userName
-			role
-			status
 		}
 	}
 `

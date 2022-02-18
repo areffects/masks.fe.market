@@ -9,7 +9,6 @@ const SpaceXLaunch = styled.li`
 `
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 const SpaceX: React.FC<{ spacex: SpaceXRoot[] }> = ({ spacex }) => {
-	// console.log('props1 :>> ', props)
 	return (
 		<div>
 			<h1>SpaceX Launches</h1>

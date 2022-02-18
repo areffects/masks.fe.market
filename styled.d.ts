@@ -17,9 +17,11 @@ declare module 'styled-components' {
 			primary: string
 			black: string
 			gray: string
+			lightGray: string
 			white: string
 			linkBlue: string
 			error: string
+			blue: string
 		}
 		font?: {
 			boldCondensed?: string

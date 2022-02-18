@@ -12,7 +12,6 @@ const SpaceXLaunch: React.FC<WithTranslation & { spacex: SpaceXRoot }> = ({ spac
 		return <div>Loading...</div>
 	}
 
-	// console.log('Effects :>> ', spacex)
 	return (
 		<div>
 			<img src={spacex.links.patch.small} alt="" />
